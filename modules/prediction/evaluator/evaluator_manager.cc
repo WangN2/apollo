@@ -271,6 +271,11 @@ void EvaluatorManager::EvaluateObstacle(Obstacle* obstacle,
           evaluator->Evaluate(obstacle, obstacles_container);
         }
       } else {
+        evaluator = GetEvaluator(vehicle_on_lane_caution_evaluator_);
+        CHECK_NOTNULL(evaluator);
+        if (evaluator->Evaluate(obstacle, obstacles_container)) {
+          break;
+        }
         ADEBUG << "Obstacle: " << obstacle->id()
                << " is neither on lane, nor in junction. Skip evaluating.";
       }

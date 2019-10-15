@@ -184,7 +184,7 @@ void SemanticLSTMEvaluator::LoadModel() {
   torch::set_num_threads(1);
   // TODO(Hongyi): change model file name and gflag
   torch_model_ =
-      torch::jit::load(FLAGS_torch_vehicle_junction_map_file, device_);
+      torch::jit::load("/apollo/modules/prediction/data/model.pt", device_);
 }
 
 }  // namespace prediction
